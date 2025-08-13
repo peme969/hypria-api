@@ -2,4 +2,10 @@
 	"name": "hypria-api",
   "compatibility_date": "2025-08-13",
   "main": "weather.js"
+"observability": {
+    "logs": {
+      "enabled": true
+    }
+  }
+
  }
