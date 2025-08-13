@@ -25,22 +25,6 @@ async function handleRequest(event) {
     });
   }
 
-  if (url.pathname === "/location") {
-    try {
-      const resp = await fetch(`https://api.ipdata.co?api-key=${IPDATA_KEY}`);
-      const data = await resp.json();
-      return new Response(
-        JSON.stringify({ latitude: data.latitude, longitude: data.longitude }),
-        { headers }
-      );
-    } catch (err) {
-      return new Response(JSON.stringify({ error: "Failed to get location" }), {
-        status: 500,
-        headers,
-      });
-    }
-  }
-
   if (url.pathname === "/weather") {
     const q = url.searchParams.get("q");
     if (!q)
