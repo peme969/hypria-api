@@ -59,11 +59,9 @@ async function handleRequest(request) {
         const cachedBody = await cached.text();
         return new Response(cachedBody, { status: cached.status, headers });
       }
-
+      const sanitizedQ = q.replace(/\s*,\s*/, ',');
       const upstream = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}&q=${encodeURIComponent(
-          q
-        )}&days=3&aqi=yes&alerts=yes`
+        `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}&q=${encodeURIComponent(sanitizedQ)}&days=3&aqi=yes&alerts=yes`
       );
       const payload = await upstream.json();
       const response = new Response(JSON.stringify(payload), {
