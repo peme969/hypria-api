@@ -1,10 +1,11 @@
 addEventListener("fetch", (event) => {
-  event.respondWith(handleRequest(event.request));
+  event.respondWith(handleRequest(event));
 });
 
 const CACHE_TTL = 300; // seconds
 
-async function handleRequest(request) {
+async function handleRequest(event) {
+  const request = event.request;
   const url = new URL(request.url);
 
   const headers = {
