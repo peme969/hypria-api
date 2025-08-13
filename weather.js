@@ -9,7 +9,8 @@ async function handleRequest(event) {
   const url = new URL(request.url);
 
   const headers = {
-    "Access-Control-Allow-Origin": `${domain}`,
+    //"Access-Control-Allow-Origin": `${domain}`,
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json; charset=utf-8"
